@@ -1,0 +1,47 @@
+{% extends 'shortstoryapp/base.html' %}
+
+{% block title %}
+  <title>Рассказы</title>
+{% endblock title %}
+
+  <div class="clear"></div>
+
+  <!--Content-->
+
+  {% block story %}
+  <div class="content" id="ajax-content">
+
+
+        <div class="text-intro">
+
+          <!--h1>Рассказы</h1>
+          <p>Все истории доступные на сайте ниже</p-->
+
+        </div>
+
+
+  <ul class="portfolio-grid">
+
+
+  {% for story in story_list %}
+    <li class="grid-item" data-jkit="[show:delay=3000;speed=500;animation=fade]">
+      <img src="{{ story.illustration.url }}">
+        <a class="ajax-link" href="{{ story.get_absolute_url }}">
+            <div class="grid-hover">
+              <h2>
+                {{ story.title }}
+              </h2>
+              <p>
+                {{ story.author }}
+              </p>
+            </div>
+
+        </a>
+    </li>
+    {% endfor %}
+
+  </ul>
+
+  </div>
+
+{% endblock story %}

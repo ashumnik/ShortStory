@@ -1,0 +1,22 @@
+{% extends 'shortstoryapp/base.html' %}
+
+{% block title %}
+<title>ShortSTORY</title>
+{% endblock title %}
+  <!--Content-->
+  {% block content %}
+  <div class="content" id="ajax-content">
+
+
+        <div class="text-intro" id="site-type">
+
+          <h1>Качественная литература. Коротко.</h1>
+          {% if user.username %}
+          <p>Приятного чтения</p>
+          {% else %}
+          <p>Зарагистрируйтесь чтобы начать чтение рассказов от известных авторов!</p>
+          {% endif %}
+
+        </div>
+
+{% endblock content %}

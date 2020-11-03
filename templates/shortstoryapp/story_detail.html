@@ -1,0 +1,43 @@
+{% extends 'shortstoryapp/base.html' %}
+<div class="clear"></div>
+  <!--Content-->
+  {% block story %}
+  <div class="content" id="ajax-content">
+        <div class="text-intro">
+          <h1>{{ story.title }}</h1>
+
+              <div class="prev-next">
+                <div class="prev-button"><a class="ajax-link" href="{{ story.author.get_absolute_url }}">{{ story.author.name }}</a></div>
+              </div>
+              <br/><br/>
+              <div class="two-column">
+		            <p>{{ story.description }}</p>
+		          </div>
+              <br/><br/><br/>
+              <div class="one-colomn">
+                <img src="{{ story.illustration.url }}" width="450" height="auto">
+              </div>
+                <div class="clear"></div>
+                  <br/><br/><br/><br/>
+
+
+                    <form action="{% url 'story_likes' story.url %}" method=POST class='like-form' id={{story.id}}>
+                      {% csrf_token %}
+                      {% if liked %}
+                        <button type="submit", name="story_id", value="{{ story.id }}", class="ui button like-btn{{story.id}}">{{ total_likes }} нравится</button>
+                      {% else %}
+                        <button type="submit", name="story_id", value="{{ story.id }}", class="ui button like-btn{{story.id}}">{{ total_likes }} нравится</button>
+                      {% endif %}
+                      </form>
+
+
+
+                    <br/><br/><br/><br/>
+                    <div class="prev-next">
+					          <div class="prev-button"><a class="ajax-link" href="/stories/">Вернуться к списку рассказов</a></div>
+
+					        </div>
+            </div>
+
+    </div>
+{% endblock story %}

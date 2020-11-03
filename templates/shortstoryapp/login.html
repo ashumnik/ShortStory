@@ -1,0 +1,48 @@
+{% extends 'shortstoryapp/base.html' %}
+
+{% block title %}
+<title>Вход</title>
+{% endblock title %}
+
+  <!--Content-->
+
+{% block content %}
+  <div class="content" id="ajax-content">
+
+        <div class="text-intro">
+
+          <h1>Вход</h1>
+          <p>Введите свои данные, для того чтобы начать чтение!</p>
+
+          <form method="POST" action="">
+          {% csrf_token %}
+            <div class="contact-one">
+                <p>
+                  <label for="username">Имя пользователя</label><br />
+                  <input type="text" name="username" id="username">
+
+                  <label>Пароль</label><br />
+                  <input type="password" name="password" id="password">
+
+                  <br/><br/>
+
+                  <input name="send" type="submit" value="Вход" />
+                </p>
+
+                {% for message in messages %}
+					           <p id="messages">{{message}}</p>
+				        {% endfor %}
+
+              <p>
+                Еще нет аккаунта? <a href="{% url 'registration' %}" class="ml-2"> Регистрация </a>
+                <br/><br/><br/><br/><br/><br/><br/>
+              </p>
+            </div>
+          </form>
+
+
+        </div>
+
+
+  </div>
+{% endblock content %}

@@ -1,0 +1,23 @@
+<div class="opacity-nav">
+
+        <div class="menu-index" id="buttons" style="z-index:999999">
+        <i class="fa  fa-close"></i>
+        </div>
+
+
+        <ul class="menu-fullscreen">
+          {% if user.username %}
+          <li><a class="hello-msg">Привет, {{request.user}}</a></li>
+          <li><br/>
+          <li><a class="ajax-link" href="/stories/">Рассказы</a></li>
+          {% endif %}
+          <li><a class="ajax-link" href="/about/">О сайте</a></li>
+          {% if user.username %}
+          <li><a  class="hello-msg" href="{% url 'logout' %}">Выйти</a></li>
+          {% else %}
+          <li> <a class="ajax-link" href="/registration/">Регистрация</a></li>
+          <li> <a class="ajax-link" href="/login/">Вход</a></li>
+          {% endif %}
+        </ul>
+
+</div>
